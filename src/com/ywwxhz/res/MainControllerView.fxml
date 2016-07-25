@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane hgap="15.0" prefHeight="600.0" vgap="15.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ywwxhz.controllers.MainController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" percentHeight="60.0" prefHeight="338.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="174.0" vgrow="SOMETIMES" />
+      <RowConstraints vgrow="NEVER" />
+   </rowConstraints>
+   <children>
+      <AnchorPane GridPane.rowSpan="2">
+         <children>
+            <TitledPane animated="false" collapsible="false" focusTraversable="false" minHeight="400.0" text="Cron 配置" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <TabPane fx:id="configTabPane" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE" tabMinWidth="60.0">
+                    <tabs>
+                      <Tab text="秒">
+                           <content>
+                              <VBox spacing="15.0">
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                                 <children>
+                                    <RadioButton fx:id="secType1" focusTraversable="false" mnemonicParsing="false" selected="true" text="每秒">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="secondGroup" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="secType2" focusTraversable="false" mnemonicParsing="false" text="区间" toggleGroup="$secondGroup" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="从" />
+                                          <TextField fx:id="fromSec" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="0" />
+                                          <Label text="秒至" />
+                                          <TextField fx:id="toSec" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="秒" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <RadioButton fx:id="secType3" focusTraversable="false" mnemonicParsing="false" text="循环" toggleGroup="$secondGroup" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="从" />
+                                          <TextField fx:id="steptFromSec" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="0" />
+                                          <Label text="秒开始，间隔" />
+                                          <TextField fx:id="steptPreSec" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="秒" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <RadioButton fx:id="secType4" focusTraversable="false" mnemonicParsing="false" text="指定" toggleGroup="$secondGroup" />
+                                    <FlowPane fx:id="secGrp" disable="true" VBox.vgrow="NEVER">
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" />
+                                       </padding>
+                                    </FlowPane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="分">
+                           <content>
+                              <VBox spacing="15.0">
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                                 <children>
+                                    <RadioButton fx:id="minType1" focusTraversable="false" mnemonicParsing="false" selected="true" text="每分">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="minuteGroup" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="minType2" focusTraversable="false" mnemonicParsing="false" text="区间" toggleGroup="$minuteGroup" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="从" />
+                                          <TextField fx:id="fromMin" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="0" />
+                                          <Label text="分至" />
+                                          <TextField fx:id="toMin" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="分" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <RadioButton fx:id="minType3" focusTraversable="false" mnemonicParsing="false" text="循环" toggleGroup="$minuteGroup" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="从" />
+                                          <TextField fx:id="steptFromMin" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="0" />
+                                          <Label text="分开始，间隔" />
+                                          <TextField fx:id="steptPreMin" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="分钟" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <RadioButton fx:id="minType4" focusTraversable="false" mnemonicParsing="false" text="指定" toggleGroup="$minuteGroup" />
+                                    <FlowPane fx:id="minGrp" disable="true" VBox.vgrow="NEVER">
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" />
+                                       </padding>
+                                    </FlowPane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="时">
+                           <content>
+                              <VBox spacing="15.0">
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                                 <children>
+                                    <RadioButton fx:id="hourType1" focusTraversable="false" mnemonicParsing="false" selected="true" text="每小时">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="hoursGroup" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="hourType2" focusTraversable="false" mnemonicParsing="false" text="区间" toggleGroup="$hoursGroup" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="从" />
+                                          <TextField fx:id="fromHour" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="0" />
+                                          <Label text="点至" />
+                                          <TextField fx:id="toHour" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="点" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <RadioButton fx:id="hourType3" focusTraversable="false" mnemonicParsing="false" text="循环" toggleGroup="$hoursGroup" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="从" />
+                                          <TextField fx:id="steptFromHour" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="0" />
+                                          <Label text="点开始，间隔" />
+                                          <TextField fx:id="steptPreHour" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="小时" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <RadioButton fx:id="hourType4" focusTraversable="false" mnemonicParsing="false" text="指定" toggleGroup="$hoursGroup" />
+                                    <FlowPane fx:id="hoursGrp" disable="true" VBox.vgrow="NEVER">
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" />
+                                       </padding>
+                                    </FlowPane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="天">
+                           <content>
+                              <VBox spacing="15.0">
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                                 <children>
+                                    <RadioButton fx:id="dayType1" focusTraversable="false" mnemonicParsing="false" selected="true" text="每天">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="dayGroup" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="dayType2" focusTraversable="false" mnemonicParsing="false" text="区间" toggleGroup="$dayGroup" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="从" />
+                                          <TextField fx:id="fromDay" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="号至" />
+                                          <TextField fx:id="toDay" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="2" />
+                                          <Label text="号" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <RadioButton fx:id="dayType3" focusTraversable="false" mnemonicParsing="false" text="循环" toggleGroup="$dayGroup" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="从" />
+                                          <TextField fx:id="steptFromDay" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="号开始，间隔" />
+                                          <TextField fx:id="steptPreDay" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="天" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <RadioButton fx:id="dayType4" focusTraversable="false" mnemonicParsing="false" text="指定" toggleGroup="$dayGroup" />
+                                    <FlowPane fx:id="dayGrp" disable="true" VBox.vgrow="NEVER">
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" />
+                                       </padding>
+                                    </FlowPane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="月">
+                           <content>
+                              <VBox spacing="15.0">
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                                 <children>
+                                    <RadioButton fx:id="monType1" focusTraversable="false" mnemonicParsing="false" selected="true" text="每月">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="monGroup" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="monType2" focusTraversable="false" mnemonicParsing="false" text="区间" toggleGroup="$monGroup" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="从" />
+                                          <TextField fx:id="fromMon" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="月至" />
+                                          <TextField fx:id="toMon" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="2" />
+                                          <Label text="月" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <RadioButton fx:id="monType3" focusTraversable="false" mnemonicParsing="false" text="循环" toggleGroup="$monGroup" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="从" />
+                                          <TextField fx:id="steptFromMon" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="月开始，间隔" />
+                                          <TextField fx:id="steptPreMon" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                          <Label text="月" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <RadioButton fx:id="monType4" focusTraversable="false" mnemonicParsing="false" text="指定" toggleGroup="$monGroup" />
+                                    <FlowPane fx:id="monGrp" disable="true" VBox.vgrow="NEVER">
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" />
+                                       </padding>
+                                    </FlowPane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="星期">
+                           <content>
+                              <VBox spacing="15.0">
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <CheckBox fx:id="useWeek" focusTraversable="false" mnemonicParsing="false" text="启用星期设置" />
+                                          <Pane HBox.hgrow="ALWAYS" />
+                                          <HBox fx:id="weekIndexHolder" alignment="CENTER_LEFT" disable="true" spacing="10.0">
+                                             <children>
+                                                <Label text="每月第" />
+                                                <TextField fx:id="indexOfWeek" prefHeight="23.0" prefWidth="40.0" />
+                                                <Label text="周" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <VBox fx:id="weekHolder" disable="true" spacing="15.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <RadioButton fx:id="weekType1" focusTraversable="false" mnemonicParsing="false" selected="true" text="每天">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="weekGroup" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton fx:id="weekType2" focusTraversable="false" mnemonicParsing="false" text="区间" toggleGroup="$weekGroup" />
+                                          <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                             <children>
+                                                <Label text="从" />
+                                                <ChoiceBox fx:id="weekFrom" disable="true" prefHeight="23.0" prefWidth="75.0" />
+                                                <Label text="至" />
+                                                <ChoiceBox fx:id="weekTo" disable="true" prefHeight="23.0" prefWidth="75.0" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="20.0" />
+                                             </padding>
+                                          </HBox>
+                                          <RadioButton fx:id="weekType3" focusTraversable="false" mnemonicParsing="false" text="循环" toggleGroup="$weekGroup" />
+                                          <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                             <children>
+                                                <Label text="从" />
+                                                <ChoiceBox fx:id="steptWeekFrom" disable="true" prefHeight="23.0" prefWidth="75.0" />
+                                                <Label text="开始，间隔" />
+                                                <TextField fx:id="steptWeek" disable="true" prefHeight="23.0" prefWidth="30.0" promptText="1" />
+                                                <Label text="天" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="20.0" />
+                                             </padding>
+                                          </HBox>
+                                          <RadioButton fx:id="weekType4" focusTraversable="false" mnemonicParsing="false" text="指定" toggleGroup="$weekGroup" />
+                                          <FlowPane fx:id="weekGrp">
+                                             <padding>
+                                                <Insets left="20.0" right="20.0" />
+                                             </padding>
+                                          </FlowPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </content>
+            </TitledPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane GridPane.columnIndex="1">
+         <children>
+            <TitledPane collapsible="false" text="表达式" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <GridPane hgap="10.0" vgap="10.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="80.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints valignment="CENTER" vgrow="NEVER" />
+                      <RowConstraints vgrow="NEVER" />
+                      <RowConstraints vgrow="NEVER" />
+                      <RowConstraints vgrow="NEVER" />
+                        <RowConstraints prefHeight="30.0" valignment="TOP" vgrow="ALWAYS" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="秒" GridPane.columnIndex="1" />
+                        <Label text="分" GridPane.columnIndex="2" />
+                        <Label text="时" GridPane.columnIndex="3" />
+                        <Label text="天" GridPane.columnIndex="4" />
+                        <Label text="月" GridPane.columnIndex="5" />
+                        <Label text="周" GridPane.columnIndex="6" />
+                        <Label text="年" GridPane.columnIndex="7" />
+                        <Label text="字段" GridPane.rowIndex="1" />
+                        <TextField fx:id="secTF" onAction="#update" onKeyReleased="#onKeyType" promptText="*" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="minTF" onAction="#update" onKeyReleased="#onKeyType" promptText="*" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="hourTF" onAction="#update" onKeyReleased="#onKeyType" promptText="*" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <TextField fx:id="dayTF" onAction="#update" onKeyReleased="#onKeyType" promptText="*" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <TextField fx:id="monthTF" onAction="#update" onKeyReleased="#onKeyType" promptText="*" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <TextField fx:id="weekTF" onAction="#update" onKeyReleased="#onKeyType" promptText="?" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                        <TextField fx:id="yearTF" onAction="#update" onKeyReleased="#onKeyType" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                        <Label text="Cron 表达式" GridPane.rowIndex="2" />
+                        <TextField fx:id="cronExpTF" focusTraversable="false" onAction="#analizeExp" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="2" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#analizeExp" text="解析" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                        <Label text="开始时间" GridPane.rowIndex="3" />
+                        <TextField fx:id="startTimeTF" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="3" />
+                        <Label text="执行预览" wrapText="true" GridPane.rowIndex="4" />
+                        <ListView fx:id="execList" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
+                        </ListView>
+                     </children>
+                  </GridPane>
+               </content>
+            </TitledPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+         <children>
+            <TitledPane animated="false" collapsible="false" text="描述" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <TextArea fx:id="description" editable="false" focusTraversable="false" promptText="描述" wrapText="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font></TextArea>
+               </content>
+            </TitledPane>
+         </children>
+      </AnchorPane>
+      <HBox alignment="CENTER_LEFT" spacing="15.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+         <children>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#genExp" text="生成表达式">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#copyExp" text="复制表达式">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Pane prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#reset" text="重置">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#exit" text="退出">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+</GridPane>
